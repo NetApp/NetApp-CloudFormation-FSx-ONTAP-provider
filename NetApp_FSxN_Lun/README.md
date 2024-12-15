@@ -135,16 +135,3 @@ _Type_: String
 _Allowed Values_: <code>aix</code> | <code>hpux</code> | <code>hyper_v</code> | <code>linux</code> | <code>netware</code> | <code>openvms</code> | <code>solaris</code> | <code>solaris_efi</code> | <code>vmware</code> | <code>windows</code> | <code>windows_2008</code> | <code>windows_gpt</code> | <code>xen</code>
 
 _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
-
-## Return Values
-
-### Fn::GetAtt
-
-The `Fn::GetAtt` intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values.
-
-For more information about using the `Fn::GetAtt` intrinsic function, see [Fn::GetAtt](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html).
-
-#### UUID
-
-Returns the <code>UUID</code> value.
-

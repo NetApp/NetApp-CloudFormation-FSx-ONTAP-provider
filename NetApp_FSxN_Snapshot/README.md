@@ -156,16 +156,3 @@ _Type_: String
 _Pattern_: <code>^((\d{4})-(0[1-9]|1[0-2])-([0-2]\d|3[01]) ([01]\d|2[0-4]):([0-5]\d):([0-5]\d))$</code>
 
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
-
-## Return Values
-
-### Fn::GetAtt
-
-The `Fn::GetAtt` intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values.
-
-For more information about using the `Fn::GetAtt` intrinsic function, see [Fn::GetAtt](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html).
-
-#### UUID
-
-Returns the <code>UUID</code> value.
-
