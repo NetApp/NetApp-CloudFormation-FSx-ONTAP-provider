@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Shows how to create a link
+Resources:
+  MyLink:
+    Type: NetApp::FSxN::Link::MODULE
+    Properties:
+      SubnetIds:
+        - <subnetId>
+      SecurityGroupIds:
+        - <SecurityGroupId>
+      LinkName: <linkName>
+Outputs:
+  LinkArn:
+    Value:
+      Fn::GetAtt: MyLinkLambdaFunction.Arn
