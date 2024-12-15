@@ -1,0 +1,16 @@
+{
+    "Resources": {
+        "MyLink": {
+            "Type": "NetApp::FSxN::Link::MODULE",
+            "Properties": {
+                "SubnetIds": [
+                    "<subnetId>"
+                ],
+                "SecurityGroupIds": [
+                    "<SecurityGroupId>"
+                ],
+                "LinkName": "<linkName>"
+            }
+        }
+    }
+}
