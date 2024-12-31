@@ -1,0 +1,145 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template to create ClusterPeer, SvmPeer, Source Volume, Destination Volume and SnapMirror resources.
+
+Parameters:
+  SourceFileSystemId:
+    Type: String
+  LinkArn:
+    Type: String
+  DestinationFileSystemId:
+    Type: String
+  LinkArnDestination:
+    Type: String
+  SourceSecretArn:
+    Type: String
+  SourceSecretKey:
+    Type: String
+  DestinationSecretArn:
+    Type: String
+  DestinationSecretKey:
+    Type: String
+  SourceVolumeName:
+    Type: String
+    Description: The name of the source volume for SnapMirror.
+  DestinationVolumeName:
+    Type: String
+    Description: The name of the destination volume for SnapMirror.
+  SourceSVMName:
+    Type: String
+    Description: The name of the source SVM for SnapMirror.
+  DestinationSVMName:
+    Type: String
+    Description: The name of the destination SVM for SnapMirror.
+  PolicyName:
+    Type: String
+    Description: The name of the SnapMirror policy.
+
+Resources:
+  ClusterPeer:
+    Type: NetApp::FSxN::ClusterPeer
+    Properties:
+      FsxAdminPasswordSource:
+        Secret:
+          SecretArn: !Ref SourceSecretArn
+          SecretKey: !Ref SourceSecretKey
+      FileSystemId: !Ref SourceFileSystemId
+      LinkArn: !Ref LinkArn
+      FsxnDestinationInfo:
+        FsxAdminPasswordSource:
+          Secret:
+            SecretArn: !Ref DestinationSecretArn
+            SecretKey: !Ref DestinationSecretKey
+        FileSystemId: !Ref DestinationFileSystemId
+        LinkArn: !Ref LinkArnDestination
+    DeletionPolicy: Retain
+
+  SvmPeer:
+    Type: NetApp::FSxN::SvmPeer
+    Properties:
+      FsxAdminPasswordSource:
+        Secret:
+          SecretArn: !Ref SourceSecretArn
+          SecretKey: !Ref SourceSecretKey
+      FileSystemId: !Ref SourceFileSystemId
+      LinkArn: !Ref LinkArn
+      FsxnDestinationInfo:
+        FsxAdminPasswordSource:
+          Secret:
+            SecretArn: !Ref DestinationSecretArn
+            SecretKey: !Ref DestinationSecretKey
+        FileSystemId: !Ref DestinationFileSystemId
+        LinkArn: !Ref LinkArnDestination
+      PeerSvmName: !Ref DestinationSVMName
+      SVM:
+        Name: !Ref SourceSVMName
+      Applications:
+        - snapmirror
+    DependsOn: ClusterPeer
+    DeletionPolicy: Retain
+
+  SourceVolume:
+    Type: NetApp::FSxN::Volume
+    Properties:
+      FsxAdminPasswordSource:
+        Secret:
+          SecretArn: !Ref SourceSecretArn
+          SecretKey: !Ref SourceSecretKey
+      FileSystemId: !Ref SourceFileSystemId
+      LinkArn: !Ref LinkArn
+      Name: !Ref SourceVolumeName
+      SVM:
+        Name: !Ref SourceSVMName
+      Size: 2147483648000
+      Aggregates:
+        - aggr1
+    DeletionPolicy: Retain
+
+  DestinationVolume:
+    Type: NetApp::FSxN::Volume
+    Properties:
+      FsxAdminPasswordSource:
+        Secret:
+          SecretArn: !Ref DestinationSecretArn
+          SecretKey: !Ref DestinationSecretKey
+      FileSystemId: !Ref DestinationFileSystemId
+      LinkArn: !Ref LinkArnDestination
+      Name: !Ref DestinationVolumeName
+      SVM:
+        Name: !Ref DestinationSVMName
+      Size: 2147483648000
+      Type: dp
+      Aggregates:
+        - aggr1
+    DeletionPolicy: Retain
+
+  SnapMirror:
+    Type: NetApp::FSxN::SnapMirror
+    Properties:
+      FsxAdminPasswordSource:
+        Secret:
+          SecretArn: !Ref SourceSecretArn
+          SecretKey: !Ref SourceSecretKey
+      FileSystemId: !Ref SourceFileSystemId
+      LinkArn: !Ref LinkArn
+      FsxnDestinationInfo:
+        FsxAdminPasswordSource:
+          Secret:
+            SecretArn: !Ref DestinationSecretArn
+            SecretKey: !Ref DestinationSecretKey
+        FileSystemId: !Ref DestinationFileSystemId
+        LinkArn: !Ref LinkArnDestination
+      SnapMirrorSourceEndpoint:
+        SVM:
+          Name: !Ref SourceSVMName
+        Volume: !Ref SourceVolumeName
+      SnapMirrorEndpoint:
+        SVM:
+          Name: !Ref DestinationSVMName
+        Volume: !Ref DestinationVolumeName
+      Policy: !Ref PolicyName
+    DependsOn:
+      - ClusterPeer
+      - SvmPeer
+      - SourceVolume
+      - DestinationVolume
+    DeletionPolicy: Delete

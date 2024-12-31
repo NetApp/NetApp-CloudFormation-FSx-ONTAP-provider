@@ -1,0 +1,76 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template to create IGroup, Volume and Lun resources.
+
+Parameters:
+  FileSystemId:
+    Type: String
+  LinkArn:
+    Type: String
+  SecretArn:
+    Type: String
+  SecretKey:
+    Type: String
+  VolumeName:
+    Type: String
+  LunName:
+    Type: String
+    Description: The name of the LUN.
+  SVMName:
+    Type: String
+    Description: The name of the SVM.
+
+Resources:
+  IGroup:
+    Type: NetApp::FSxN::IGroup
+    Properties:
+      FsxAdminPasswordSource:
+        Secret:
+          SecretArn: !Ref SecretArn
+          SecretKey: !Ref SecretKey
+      FileSystemId: !Ref FileSystemId
+      LinkArn: !Ref LinkArn
+      Name: igrouptest
+      Initiators:
+        - Name: iqn.2022-10.com.storage:server
+      SVM:
+        Name: !Ref SVMName
+      OsType: linux
+    DeletionPolicy: Delete
+
+  Volume:
+    Type: NetApp::FSxN::Volume
+    Properties:
+      FsxAdminPasswordSource:
+        Secret:
+          SecretArn: !Ref SecretArn
+          SecretKey: !Ref SecretKey
+      FileSystemId: !Ref FileSystemId
+      LinkArn: !Ref LinkArn
+      Name: !Ref VolumeName
+      SVM:
+        Name: !Ref SVMName
+      Size: 2147483648000
+      Aggregates:
+        - aggr1
+    DeletionPolicy: Delete
+
+  Lun:
+    Type: NetApp::FSxN::Lun
+    Properties:
+      FsxAdminPasswordSource:
+        Secret:
+          SecretArn: !Ref SecretArn
+          SecretKey: !Ref SecretKey
+      FileSystemId: !Ref FileSystemId
+      LinkArn: !Ref LinkArn
+      SVM:
+        Name: !Ref SVMName
+      OsType: aix
+      Name: !Sub '/vol/${VolumeName}/${LunName}'
+      Size: 4096
+      IGroups:
+        - igrouptest
+    DependsOn:
+      - Volume
+      - IGroup
+    DeletionPolicy: Delete

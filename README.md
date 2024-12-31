@@ -23,16 +23,71 @@ This collection of [AWS CloudFormation resource types][1] allows management of O
 
 * [AWS Account][14]
 * [AWS CLI][15]
-* API Key
+* Preview Key
+* FSxN Credentials Stored In AWS Secret Manager
+* Execution Role
+* [Resource Activation][19]
 * Deploy a Link
 
 A Link is an entity (Lambda) that act as a proxy between the CloudFormation service and the FSx for ONTAP file systems. The Link must be deployed in a VPC that has connectivity to the management endpoint of the FSx for ONTAP file systems. A single Link can be used for all FSx for ONTAP file systems if there is connectivity for all resources.
+
+## Preview Key
+As for now the collection of resources is under private preview and can be activated using a key. To acquire a key, please email [NetApp](mailto:Ng-fsx-cloudformation@netapp.com?subject=CloudFormation%20Resource%20Provider%20key)
+
+## Credentials:
+FSx for ONTAP file systems credentials are required for the link communication. Credentials required to stored in AWS Secret Manger Service in the following formats:
+* ```Username```:```Password```
+* ```Password``` (assuming ```fsxadmin``` default user)
+
+After you have your credentials stored [create your AWS stack][12] and use the secret ARN and secret Key input for ```SecretArn``` and ```SecretKey``` input parameters.
+
+## Execution Role
+AWS Resource types requires [Activation Execution IAM Role][18].
+The following Execution Role YAML can be deployed in a stack and used for the entire collection of resources.
+
+```yaml
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  This CloudFormation template creates a role assumed by CloudFormation
+  during CRUDL operations to mutate resources on behalf of the customer.
+
+Resources:
+  ExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      MaxSessionDuration: 8400
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: resources.cloudformation.amazonaws.com
+            Action: sts:AssumeRole
+      Path: "/"
+      Policies:
+        - PolicyName: ResourceTypePolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "fsx:DescribeFileSystems"
+                  - "lambda:InvokeFunction"
+                  - "secretsmanager:GetSecretValue"
+                Resource: "*"
+Outputs:
+  ExecutionRoleArn:
+    Value:
+      Fn::GetAtt: ExecutionRole.Arn
+```
+* Specific Resource Role with a strict condition in the assume policy can be found on each resource docs named under ```resource-role.yaml``` 
 
 ## Step 1: Activate Link Module
 
 1. Sign in to the [AWS Management Console][11] with your account and navigate to CloudFormation.
 
-2. Select "Public extensions" from the left-hand pane and filter by Extension type ny Module and Publisher by "Third Party".
+2. Select "Public extensions" from the left-hand pane and filter by Extension type by Module and Publisher by "Third Party".
 
 3. Use the search bar to filter by the "NetApp" prefix.
 
@@ -41,13 +96,11 @@ A Link is an entity (Lambda) that act as a proxy between the CloudFormation serv
 5. On the **Extension details** page, specify:
 
 * Extension name
-* Execution role ARN
 * Automatic updates for minor version releases
-* Configuration
 
 6. After you have your Link module configured, [create your AWS stack][12] and use the ARN as input for the ```LinkArn``` input parameter.
 
-## Step 2: Create stack in AWS Management Console with ONTAP resources
+## Step 2: Activate ONTAP resources
 
 1. Sign in to the [AWS Management Console][11] with your account and navigate to CloudFormation.
 
@@ -64,7 +117,7 @@ A Link is an entity (Lambda) that act as a proxy between the CloudFormation serv
 * Extension name
 * Execution role ARN
 * Automatic updates for minor version releases
-* Configuration
+* Configuration (PreviewKey)
 
 6. In your terminal, specify the configuration data for the registered NetApp CloudFormation resource type, in the given account and region by using the **SetTypeConfiguration** operation:
 
@@ -216,3 +269,5 @@ Resources:
 [15]: https://aws.amazon.com/cli/api-key-auth/
 [16]: ./NetApp-FSxN-SvmPeer/
 [17]: ./NetApp-FSxN-Volume/
+[18]: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html#registry-public-enable-execution-role
+[19]: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public-activate-extension.html
