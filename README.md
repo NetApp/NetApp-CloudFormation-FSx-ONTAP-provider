@@ -18,6 +18,7 @@ This collection of [AWS CloudFormation resource types][1] allows management of O
 | NetApp::FSxN::SnapshotPolicy | This resource type manages a snapshot policy | [/NetApp-FSxN-SnapshotPolicy][10] |
 | NetApp::FSxN::SvmPeer | This resource type manages an SVM peer | [/NetApp-FSxN-SvmPeer][16] |
 | NetApp::FSxN::Volume | This resource type manages a volume | [/NetApp-FSxN-Volume][17] |
+* Resource import and drifting not supported.
 
 ## Prerequisites
 
