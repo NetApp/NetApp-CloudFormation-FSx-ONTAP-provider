@@ -125,7 +125,7 @@ Outputs:
   For example:
 
   ```Bash
-  $ aws cloudformation set-type-configuration \z`
+  aws cloudformation set-type-configuration \
   --region us-west-2 --type RESOURCE \
   --type-name NetApp::FSxN::CifsShare \
   --configuration-alias default \
