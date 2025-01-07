@@ -2,10 +2,10 @@
 
 This collection of [AWS CloudFormation resource types][1] allows management of ONTAP entities to be controlled using [AWS CloudFormation][2]. As for now the collection of resources is under private preview and can be activated using a key. To acquire a key, please email [NetApp](mailto:Ng-fsx-cloudformation@netapp.com?subject=CloudFormation%20Resource%20Provider%20key)
 
-[end-user documentation](docs/user/generated) including:
+End-user documentation including:
 
-* [examples](docs/user/generated/stories)
-* [supported GitHub resource types](docs/user/generated/resources)
+* [Examples][20]
+* supported GitHub resource types:
 
 | Resource | Description | Documentation |
 | --- | --- | --- |
@@ -272,3 +272,4 @@ Resources:
 [17]: ./NetApp-FSxN-Volume/
 [18]: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html#registry-public-enable-execution-role
 [19]: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public-activate-extension.html
+[20]: Examples/
