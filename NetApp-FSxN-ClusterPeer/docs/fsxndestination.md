@@ -34,7 +34,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -45,6 +45,8 @@ _Pattern_: <code>^(fs-[0-9a-f]{8,18})$</code>
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 #### LinkArn
+
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
 
 _Required_: Yes
 

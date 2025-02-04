@@ -38,7 +38,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### JunctionPath
 
-The fully-qualified path in the owning SVM's namespace at which the volume is mounted.
+The fully-qualified path in the hosting SVM's namespace at which the volume is mounted.
 
 _Required_: No
 
@@ -48,7 +48,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### ExportPolicy
 
-Export Policy associated with the volume.
+The export policy associated with the volume.
 
 _Required_: No
 

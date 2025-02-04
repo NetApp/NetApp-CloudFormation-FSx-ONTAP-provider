@@ -24,6 +24,8 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### SecretArn
 
+The ARN of the secret stored in AWS Secrets Manager.
+
 _Required_: Yes
 
 _Type_: String
@@ -33,6 +35,8 @@ _Pattern_: <code>^arn:aws(-(cn|us-gov))?:secretsmanager:(([a-z]+-)+[0-9])?:([0-9
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 #### SecretKey
+
+Reference for the SecretKey. The actual password is stored in AWS Secret Manager.
 
 _Required_: Yes
 

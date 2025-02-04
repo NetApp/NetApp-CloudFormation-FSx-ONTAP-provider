@@ -29,7 +29,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### Name
 
-Optional name for the cluster peer relationship. By default, it is the name of the remote cluster
+Optional name for the cluster peer relationship. By default, it is the name of the remote cluster.
 
 _Required_: No
 
@@ -39,7 +39,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### RemoteIpAddresses
 
-Addresses of the remote peers. The local peer must be able to reach and connect to these addresses for the request to succeed in creating a peer. Assumes existing intercluster LIFs of remote cluster if not provided.
+Addresses of the remote peers. Assumes existing intercluster LIFs of remote cluster if not provided.
 
 _Required_: No
 

@@ -1,6 +1,6 @@
 # NetApp::FSxN::Volume
 
-Resource schema for Volume.
+A volume is a logical storage unit which provides flexible space for data files, snapshots, and block devices. The NetApp:FSxN custom resource allows you to configure and manage FSX for ONTAP volumes by specifying parameters such as volume name, size, storage efficiency, export policies, and other attributes. To use this resource, you must create the Link module. Once activated, you will need a preview key to consume this resource. Please reach out to Ng-fsx-cloudformation@netapp.com to get the key.
 
 ## Syntax
 
@@ -79,7 +79,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -90,6 +90,8 @@ _Pattern_: <code>^(fs-[0-9a-f]{8,18})$</code>
 _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 #### LinkArn
+
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
 
 _Required_: Yes
 
@@ -109,13 +111,13 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Name
 
-Volume name. The name of volume must start with an alphabetic character (a to z or A to Z) or an underscore (\_). The name must be 197 or fewer characters in length for FlexGroups, and 203 or fewer characters in length for all other types of volumes. Volume names must be unique within an SVM.
+Volume name. The name of volume must start with an alphabetic character (a to z or A to Z) or an underscore (_). The name must be 197 or fewer characters in length for FlexGroups, and 203 or fewer characters in length for all other types of volumes. Volume names must be unique within an SVM.
 
 _Required_: Yes
 
 _Type_: String
 
-_Pattern_: <code>^[a-zA-Z\_][a-zA-Z0-9_]{0,202}$</code>
+_Pattern_: <code>^[a-zA-Z_][a-zA-Z0-9_]{0,202}$</code>
 
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
@@ -131,6 +133,8 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### ONTAPTags
 
+Tags associated with the ONTAP volume.
+
 _Required_: No
 
 _Type_: List of <a href="ontaptag.md">ONTAPTag</a>
@@ -139,7 +143,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Aggregates
 
-Aggregate name list hosting the volume.
+List of aggregate names that host the volume.
 
 _Required_: No
 
@@ -149,7 +153,7 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### ConstituentsPerAggregate
 
-Specifies the number of times to iterate over the aggregates when creating or expanding a FlexGroup volume.
+Specifies the number of times to iterate constituents over the aggregates when creating or expanding a FlexGroup volume.
 
 _Required_: No
 
@@ -169,7 +173,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Encryption
 
-Creates an encrypted or an unencrypted volume.
+Indicates if the volume is encrypted.
 
 _Required_: No
 
@@ -179,7 +183,7 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### Type
 
-Type of the volume.
+The type of volume (e.g., read-write or data protection).
 
 _Required_: No
 
@@ -191,7 +195,7 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### Style
 
-The style of the volume.
+The style of the volume (e.g., FlexVol or FlexGroup).
 
 _Required_: No
 
@@ -203,7 +207,7 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### State
 
-Volume state. Client access is supported only when volume is online and junctioned. Taking volume to offline or restricted state removes its junction path and blocks client access. When volume is in restricted state some operations like parity reconstruction and iron on commit are allowed. The 'mixed' state applies to FlexGroup volumes only and cannot be specified as a target state. An 'error' state implies that the volume is not in a state to serve data.
+The state of the volume (e.g., online, offline, restricted). Client access is supported only when volume is online and connected to its junction path. Taking volume to offline or restricted state removes its junction path and blocks client access.
 
 _Required_: No
 
@@ -215,7 +219,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### AntiRansomwareState
 
-Anti-ransomware state.
+The anti-ransomware state of the volume.
 
 _Required_: No
 

@@ -30,7 +30,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### Count
 
-The number of Snapshot copies to maintain for this schedule.
+The number of snapshot copies to maintain for this schedule.
 
 _Required_: Yes
 
@@ -40,7 +40,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### ScheduleName
 
-Schedule name at which Snapshot copies are captured on the volume.
+Schedule name at which snapshot copies are captured on the volume.
 
 _Required_: Yes
 
@@ -50,7 +50,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Prefix
 
-The prefix to use while creating Snapshot copies at regular intervals.
+The prefix to use while creating snapshot copies at regular intervals.
 
 _Required_: No
 
@@ -60,7 +60,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### RetentionPeriod
 
-The retention period of Snapshot copies for this schedule. The retention period value represents a duration and must be specified in the ISO-8601 duration format. The retention period can be in years, months, days, hours, and minutes. A period specified for years, months, and days is represented in the ISO-8601 format as "PY", "PM", "PD" respectively, for example "P10Y" represents a duration of 10 years. A duration in hours and minutes is represented by "PTH" and "PTM" respectively. The period string must contain only a single time element that is, either years, months, days, hours, or minutes. A duration which combines different periods is not supported, for example "P1Y10M" is not supported.
+The retention period of snapshot copies for this schedule. The retention period value represents a duration and must be specified in the ISO-8601 duration format. The retention period can be in years, months, days, hours, and minutes. A period specified for years, months, and days is represented in the ISO-8601 format as 'PY', 'PM', 'PD' respectively, for example 'P10Y' represents a duration of 10 years. A duration in hours and minutes is represented by 'PTH' and 'PTM' respectively. The period string must contain only a single time element that is, either years, months, days, hours, or minutes. A duration which combines different periods is not supported, for example 'P1Y10M' is not supported.
 
 _Required_: No
 

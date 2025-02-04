@@ -52,7 +52,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### IsCloned
 
-Setting "IsCloned" attribute to false would split the clone from it's parent.
+Setting 'IsCloned' attribute to false splits the clone from its parent volume.
 
 _Required_: No
 

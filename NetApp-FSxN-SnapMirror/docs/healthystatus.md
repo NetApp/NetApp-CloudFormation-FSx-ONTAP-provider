@@ -25,6 +25,8 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### Healthy
 
+Indicates whether the relationship is healthy.
+
 _Required_: No
 
 _Type_: Boolean

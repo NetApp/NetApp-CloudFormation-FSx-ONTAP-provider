@@ -1,6 +1,6 @@
 # NetApp::FSxN::SnapMirror
 
-Resource schema for SnapMirror.
+FSx for ONTAP provides SnapMirror, an embedded data replication technology that allows for the efficient transfer of data between two file systems. SnapMirror replicates data by creating point-in-time copies of the data. It is used for data protection, disaster recovery, and business continuity by ensuring that up-to-date copies of data are available at remote locations. To use SnapMirror, you must set up cluster peering and SVM peering between the source and target FSx for ONTAP file systems. Once activated, you will need a preview key to consume this resource. Please reach out to Ng-fsx-cloudformation@netapp.com to get the key. To use this resource, you would need to first create the Link module.
 
 ## Syntax
 
@@ -20,7 +20,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
         "<a href="#snapmirrorendpoint" title="SnapMirrorEndpoint">SnapMirrorEndpoint</a>" : <i><a href="endpoint.md">Endpoint</a></i>,
         "<a href="#snapmirrordestinationcreation" title="SnapMirrorDestinationCreation">SnapMirrorDestinationCreation</a>" : <i><a href="snapmirrordestinationcreation.md">SnapMirrorDestinationCreation</a></i>,
         "<a href="#policy" title="Policy">Policy</a>" : <i>String</i>,
-        "<a href="#throttle" title="Throttle">Throttle</a>" : <i>Integer</i>,
+        "<a href="#throttle" title="Throttle">Throttle</a>" : <i>Double</i>,
         "<a href="#transferschedule" title="TransferSchedule">TransferSchedule</a>" : <i>String</i>,
         "<a href="#stateaction" title="StateAction">StateAction</a>" : <i>String</i>,
         "<a href="#reverse" title="Reverse">Reverse</a>" : <i>Boolean</i>,
@@ -41,7 +41,7 @@ Properties:
     <a href="#snapmirrorendpoint" title="SnapMirrorEndpoint">SnapMirrorEndpoint</a>: <i><a href="endpoint.md">Endpoint</a></i>
     <a href="#snapmirrordestinationcreation" title="SnapMirrorDestinationCreation">SnapMirrorDestinationCreation</a>: <i><a href="snapmirrordestinationcreation.md">SnapMirrorDestinationCreation</a></i>
     <a href="#policy" title="Policy">Policy</a>: <i>String</i>
-    <a href="#throttle" title="Throttle">Throttle</a>: <i>Integer</i>
+    <a href="#throttle" title="Throttle">Throttle</a>: <i>Double</i>
     <a href="#transferschedule" title="TransferSchedule">TransferSchedule</a>: <i>String</i>
     <a href="#stateaction" title="StateAction">StateAction</a>: <i>String</i>
     <a href="#reverse" title="Reverse">Reverse</a>: <i>Boolean</i>
@@ -59,7 +59,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -70,6 +70,8 @@ _Pattern_: <code>^(fs-[0-9a-f]{8,18})$</code>
 _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 #### LinkArn
+
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
 
 _Required_: Yes
 
@@ -89,8 +91,6 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### SnapMirrorSourceEndpoint
 
-The endpoint of the SnapMirror relationship.
-
 _Required_: Yes
 
 _Type_: <a href="endpoint.md">Endpoint</a>
@@ -106,8 +106,6 @@ _Type_: <a href="endpoint.md">Endpoint</a>
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 #### SnapMirrorDestinationCreation
-
-Use this object to provision the destination endpoint when establishing a SnapMirror relationship for a volume. For FlexGroup SnapMirror relationships, the source and destination FlexGroups must be spread over the same number of aggregates with the same number of constituents per aggregate.
 
 _Required_: No
 
@@ -127,17 +125,17 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Throttle
 
-Throttle, in KBs per second. This "throttle" overrides the "throttle" set on the SnapMirror relationship's policy. If neither of these are set, defaults to 0, which is interpreted as unlimited.
+Throttle, in KBs per second. This 'throttle' overrides the 'throttle' set on the SnapMirror relationship's policy. If neither of these are set, the throttle defaults to 0, which is interpreted as unlimited.
 
 _Required_: No
 
-_Type_: Integer
+_Type_: Double
 
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 #### TransferSchedule
 
-Schedule used to update asynchronous relationships. This "transfer_schedule" overrides the "transfer_schedule" set on the SnapMirror relationship's policy. Remove the property to for revert. Only cron schedules are supported for SnapMirror.
+Schedule used to update asynchronous relationships. This 'transfer_schedule' overrides the 'transfer_schedule' set on the SnapMirror relationship's policy. Remove the property to revert. Only cron schedules are supported for SnapMirror.
 
 _Required_: No
 
@@ -159,7 +157,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Reverse
 
-Reverse the direction of relationship, that is, make the source endpoint as the new destination endpoint and make the destination endpoint as the new source endpoint. Can be set during modify only.
+Reverse the direction of relationship by making the source endpoint as the new destination endpoint and making the destination endpoint as the new source endpoint. Can be set during modify only.
 
 _Required_: No
 

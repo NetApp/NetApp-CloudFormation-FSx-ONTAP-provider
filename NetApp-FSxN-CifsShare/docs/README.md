@@ -1,6 +1,6 @@
 # NetApp::FSxN::CifsShare
 
-Resource schema for Cifs Shares and Cifs Shares ACLs.
+A CIFS share is a shared folder tied to an FSx for ONTAP volume. It allows Windows and other SMB-compatible clients to access files on the volume over the network. CIFS shares can be managed with access controls and permissions to ensure secure and efficient file sharing across users and applications. Once activated, you will need a preview key to consume this resource. Please reach out to Ng-fsx-cloudformation@netapp.com to get the key. To use this resource, you would need to first create the Link module.
 
 ## Syntax
 
@@ -52,7 +52,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -63,6 +63,8 @@ _Pattern_: <code>^(fs-[0-9a-f]{8,18})$</code>
 _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 #### LinkArn
+
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
 
 _Required_: Yes
 
@@ -94,7 +96,7 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### Path
 
-Path in the owning SVM namespace that is shared through this share.
+Path in the host SVM namespace that is shared through this share.
 
 _Required_: Yes
 

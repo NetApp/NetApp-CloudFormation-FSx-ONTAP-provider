@@ -24,6 +24,8 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### State
 
+The current state of the cluster peer relationship. Possible values are 'available', 'partial', 'unavailable', 'pending' and 'unidentified'.
+
 _Required_: No
 
 _Type_: String
@@ -34,7 +36,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### UpdateTime
 
-The last time the state was updated.
+The last time the status of the peer cluster was updated.
 
 _Required_: No
 

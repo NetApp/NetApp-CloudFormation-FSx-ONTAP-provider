@@ -1,6 +1,6 @@
 # NetApp::FSxN::Snapshot
 
-Resource schema for Volume Snapshot.
+A snapshot is a read-only, point-in-time copy of a volume or a LUN. It preserves the state of the data at the moment the snapshot is created, allowing users to quickly restore files or entire volumes if data is accidentally deleted, corrupted, or changed. Snapshots are highly efficient because they only store changes made after the snapshot was taken, making them ideal for data protection and recovery. Once activated, you will need a preview key to consume this resource. Please reach out to Ng-fsx-cloudformation to get the key. To use this resource, you would need to first create the Link module.
 
 ## Syntax
 
@@ -55,7 +55,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -66,6 +66,8 @@ _Pattern_: <code>^(fs-[0-9a-f]{8,18})$</code>
 _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 #### LinkArn
+
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
 
 _Required_: Yes
 
@@ -93,7 +95,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Name
 
-The name of the Snapshot copy to be created.
+The name of the snapshot copy to be created.
 
 _Required_: Yes
 
@@ -121,7 +123,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Comment
 
-Comment associated with the Snapshot copy.
+Comment associated with the snapshot copy.
 
 _Required_: No
 

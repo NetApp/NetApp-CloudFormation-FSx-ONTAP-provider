@@ -30,7 +30,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### Mode
 
-Autosize mode for the volume.
+The autosize mode of the volume.
 
 _Required_: No
 
@@ -62,7 +62,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### GrowThreshold
 
-Used space threshold size, in percentage, for the automatic growth of the volume. When the amount of used space in the volume becomes greater than this threhold, the volume automatically grows unless it has reached the maximum size. The volume grows when 'space.used' is greater than this percent of 'space.size'. The 'grow_threshold' size cannot be less than or equal to the 'shrink_threshold' size.
+The used space threshold percentage for automatic growth of the volume.
 
 _Required_: No
 
@@ -72,7 +72,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### ShrinkThreshold
 
-Used space threshold size, in percentage, for the automatic shrinkage of the volume. When the amount of used space in the volume drops below this threshold, the volume automatically shrinks unless it has reached the minimum size. The volume shrinks when the 'space.used' is less than the 'shrink_threshold' percent of 'space.size'. The 'shrink_threshold' size cannot be greater than or equal to the 'grow_threshold' size.
+The used space threshold percentage for automatic shrinkage of the volume.
 
 _Required_: No
 
