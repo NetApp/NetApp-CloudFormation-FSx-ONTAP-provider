@@ -1,7 +1,5 @@
 # NetApp::FSxN::ExportPolicy Rule
 
-Rules of the Export Policy.
-
 ## Syntax
 
 To declare this entity in your AWS CloudFormation template, use the following syntax:
@@ -69,7 +67,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### AnonymousUser
 
-User ID To Which Anonymous Users Are Mapped.
+User ID to which anonymous users are mapped.
 
 _Required_: No
 
@@ -80,6 +78,8 @@ _Pattern_: <code>^[a-zA-Z0-9_-]+$</code>
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 #### ChownMode
+
+Specifies the chown mode, either 'restricted' or 'unrestricted'.
 
 _Required_: No
 
@@ -109,6 +109,8 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### NtfsUnixSecurity
 
+Specifies the NTFS Unix security options, either 'fail' or 'ignore'.
+
 _Required_: No
 
 _Type_: String
@@ -119,7 +121,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Protocols
 
-Access Protocol(s) that the export rule describes.
+Access protocol(s) that the export rule describes.
 
 _Required_: No
 
@@ -149,7 +151,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Superuser
 
-Authentication flavors that the superuser security type governs
+Authentication flavors that the superuser security type governs.
 
 _Required_: No
 

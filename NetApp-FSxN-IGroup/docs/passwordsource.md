@@ -22,7 +22,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### Secret
 
-_Required_: No
+_Required_: Yes
 
 _Type_: <a href="secretsource.md">SecretSource</a>
 

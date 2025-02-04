@@ -24,7 +24,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### Policy
 
-Policy that determines whether the user data blocks of a volume in a FabricPool will be tiered to the cloud store when they become cold.
+Policy that determines whether the user data blocks of a volume in a FabricPool will be tiered to the capacity pool storage tier when they become cold.
 
 _Required_: Yes
 
@@ -36,7 +36,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### MinCoolingDays
 
-This parameter specifies the minimum number of days that user data blocks of the volume must be cooled before they can be considered cold and tiered out to the cloud tier.
+This parameter specifies the minimum number of days that user data blocks of the volume must be cooled before they can be considered cold and tiered out to the capacity pool storage tier.
 
 _Required_: No
 

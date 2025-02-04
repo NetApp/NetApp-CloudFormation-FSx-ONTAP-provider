@@ -26,7 +26,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### Permission
 
-Access rights that a user or group has on the defined CIFS Share
+Access rights that a user or group has on the defined CIFS Share.
 
 _Required_: Yes
 
@@ -38,7 +38,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Type
 
-Type of the user or group to add to the access control list on the defined CIFS share
+Type of the user or group to add to the access control list on the defined CIFS share.
 
 _Required_: Yes
 
@@ -50,7 +50,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### UserOrGroup
 
-User or group name to add to the access control list on the defined CIFS share
+User or group name to add to the access control list on the defined CIFS share.
 
 _Required_: Yes
 

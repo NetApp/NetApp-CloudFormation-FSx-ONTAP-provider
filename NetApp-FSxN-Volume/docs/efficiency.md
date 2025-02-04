@@ -28,6 +28,8 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 #### Compaction
 
+The compaction setting of the volume.
+
 _Required_: No
 
 _Type_: String
@@ -37,6 +39,8 @@ _Allowed Values_: <code>inline</code> | <code>none</code> | <code>mixed</code>
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 #### Compression
+
+The compression setting of the volume.
 
 _Required_: No
 
@@ -48,6 +52,8 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Dedupe
 
+The deduplication setting of the volume.
+
 _Required_: No
 
 _Type_: String
@@ -57,6 +63,8 @@ _Allowed Values_: <code>inline</code> | <code>background</code> | <code>both</co
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 #### CrossVolumeDedupe
+
+The cross-volume deduplication setting of the volume.
 
 _Required_: No
 

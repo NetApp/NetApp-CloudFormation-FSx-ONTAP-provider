@@ -157,9 +157,7 @@ The NetApp ONTAP CloudFormation resources are available on the CloudFormation Pu
 | ap-southeast-2  | Asia Pacific (Sydney)     |
 | ap-southeast-3  | Asia Pacific (Jakarta)    |
 | ap-southeast-4  | Asia Pacific (Melbourne)  |
-| ap-southeast-5  | Asia Pacific (Malaysia)   |
 | ca-central-1    | Canada (Central)          |
-| ca-west-1       | Canada West (Calgary)     |
 | eu-central-1    | Europe (Frankfurt)        |
 | eu-central-2    | Europe (Zurich)           |
 | eu-west-1       | Europe (Ireland)          |

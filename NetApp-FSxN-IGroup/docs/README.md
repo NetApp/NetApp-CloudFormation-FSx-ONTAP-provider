@@ -1,6 +1,6 @@
 # NetApp::FSxN::IGroup
 
-Resource schema for IGroup.
+An iGroup is a collection of host initiators (IQNs) that are allowed access to a specific LUN. When LUNs are associated with iGroups, administrators gain control over which hosts can connect to and access each LUN, enabling secure and organized access management for application and workloads consuming block storage. Once activated, you will need a preview key to consume this resource. Please reach out to Ng-fsx-cloudformation@netapp.com to get the key. To use this resource, you would need to first create the Link module.
 
 ## Syntax
 
@@ -50,7 +50,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -62,6 +62,8 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### LinkArn
 
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
+
 _Required_: Yes
 
 _Type_: String
@@ -71,6 +73,8 @@ _Pattern_: <code>^arn:aws(-(cn|us-gov))?:lambda:(([a-z]+-)+[0-9])?:([0-9]{12})?:
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 #### Name
+
+The name of the initiator group.
 
 _Required_: No
 
@@ -84,7 +88,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Initiators
 
-The initiators that are attached to the initiator group
+The initiators that are attached to the initiator group.
 
 _Required_: No
 
@@ -94,7 +98,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### OsType
 
-The host operating system of the initiator group. All initiators in the group should be hosts of the same operating system
+The host operating system of the initiator group. All initiators in the group should be hosts of the same operating system.
 
 _Required_: No
 

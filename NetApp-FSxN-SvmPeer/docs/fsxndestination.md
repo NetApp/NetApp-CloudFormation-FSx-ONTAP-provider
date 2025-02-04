@@ -34,7 +34,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -46,7 +46,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### LinkArn
 
-The ARN of the Lambda function that will be invoked to create the SVM peer relationship.
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
 
 _Required_: Yes
 

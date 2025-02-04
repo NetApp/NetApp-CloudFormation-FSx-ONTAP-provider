@@ -1,6 +1,6 @@
 # NetApp::FSxN::Lun
 
-Resource schema for Lun.
+A LUN (Logical unit number) is a block storage object within a volume, used to provide storage for applications that require block-level access. A LUN will appear as a virtual disk to the connected host and can be formatted with a file system or used as raw storage, enabling precise control over storage resources and performance for specific workloads. Once activated, you will need a preview key to consume this resource. Please reach out to Ng-fsx-cloudformation@netapp.com to get the key. To use this resource, you would need to first create the Link module.
 
 ## Syntax
 
@@ -54,7 +54,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -66,6 +66,8 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### LinkArn
 
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
+
 _Required_: Yes
 
 _Type_: String
@@ -76,7 +78,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Name
 
-The fully qualified path name of the LUN composed of a '/vol' prefix, the volume name, and base name of the LUN. example: /vol/volume1/lun1
+The fully qualified path name of the LUN composed of a '/vol' prefix, the volume name, and base name of the LUN. Example: /vol/volume1/lun1
 
 _Required_: Yes
 
@@ -108,7 +110,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### IGroups
 
-The initiator groups mapped to this LUN
+The initiator groups mapped to this LUN.
 
 _Required_: No
 
@@ -126,7 +128,7 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### OsType
 
-The host operating system of the initiator group. All initiators in the group should be hosts of the same operating system
+The host operating system of the initiator group. All initiators in the group should be hosts of the same operating system.
 
 _Required_: Yes
 

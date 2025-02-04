@@ -1,6 +1,6 @@
 # NetApp::FSxN::SvmPeer
 
-Resource schema for Svm Peer.
+A storage VM (SVM) peer is a relationship established between two SVMs from different FSX for ONTAP file systems, enabling the sharing of resources and data across file systems. Once activated, you will need a preview key to consume this resource. Please reach out to Ng-fsx-cloudformation@netapp.com to get the key. To use this resource, you would need to first create the Link module.
 
 ## Syntax
 
@@ -50,7 +50,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -62,7 +62,7 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### LinkArn
 
-The ARN of the Lambda function that will be invoked to create the SVM peer relationship.
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
 
 _Required_: Yes
 
@@ -82,7 +82,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### PeerSvmName
 
-Destination Peer Svm name
+The name of the destination peer SVM.
 
 _Required_: Yes
 
@@ -100,7 +100,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Applications
 
-Applications for an SVM peer relationship
+A list of applications that will use the SVM peer relationship.
 
 _Required_: Yes
 

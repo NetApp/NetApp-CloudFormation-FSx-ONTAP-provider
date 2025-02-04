@@ -1,6 +1,6 @@
 # NetApp::FSxN::SnapshotPolicy
 
-Resource schema for Snapshot Policy.
+A snapshot policy is a set of rules that specify when to create snapshots, how many copies to retain, and how to name them. A snapshot policy automatically creates and manages snapshots for a volume at defined intervals. The policy is used to simplify backup scheduling and maintain a reliable set of recovery points. Once activated, you will need a preview key to consume this resource. Please reach out to Ng-fsx-cloudformation@netapp.com to get the key. To use this resource, you would need to first create the Link module.
 
 ## Syntax
 
@@ -48,7 +48,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### FileSystemId
 
-The File System Id of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
+The file system ID of the Amazon FSx for NetApp ONTAP file system in which the resource is created.
 
 _Required_: Yes
 
@@ -60,6 +60,8 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### LinkArn
 
+The ARN of the AWS Lambda function that will be invoked to manage the resource.
+
 _Required_: Yes
 
 _Type_: String
@@ -70,7 +72,7 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### Name
 
-The name of the Snapshot policy.
+The name of the snapshot policy.
 
 _Required_: Yes
 
@@ -90,7 +92,7 @@ _Update requires_: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/l
 
 #### Copies
 
-The Snapshot copies.
+The snapshot copies that define the policy.
 
 _Required_: Yes
 
