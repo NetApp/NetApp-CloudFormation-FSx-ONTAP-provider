@@ -145,13 +145,13 @@ _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormati
 
 #### StateAction
 
-Setting state of the relationship. Can be set during modify only.
+Modify the SnapMirror replication status using 'StateAction' in the CloudFormation template when the relationship exists. Follow ONTAP protocol: set to 'paused' to pause, 'snapmirrored' to resync, and 'update' to trigger the transfer API. For subsequent updates, first clear the prior 'StateAction' then set it again.
 
 _Required_: No
 
 _Type_: String
 
-_Allowed Values_: <code>broken_off</code> | <code>paused</code> | <code>snapmirrored</code> | <code>in_sync</code>
+_Allowed Values_: <code>broken_off</code> | <code>paused</code> | <code>snapmirrored</code> | <code>in_sync</code> | <code>update</code>
 
 _Update requires_: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
